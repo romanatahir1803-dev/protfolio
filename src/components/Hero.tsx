@@ -1,43 +1,12 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { ArrowDown, FileDown, Sparkles, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
+import AIAvatarPresenter from "@/components/AIAvatarPresenter";
 
 export default function Hero() {
-  const [imageError, setImageError] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  // Mouse tilt physics for the portrait frame
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
     const target = document.querySelector("#projects");
@@ -161,25 +130,24 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: 3D Arch Frame Portrait with Orbiting Glass Chips */}
+        {/* Right Column: Interactive Animated Speaking AI Avatar Presenter */}
         <div className="lg:col-span-5 flex justify-center items-center relative py-6">
           
-          {/* Ambient Warm Amber Glow Behind Arch */}
+          {/* Ambient Warm Amber Glow Behind Presenter */}
           <div
             className="absolute w-72 sm:w-96 h-96 sm:h-[480px] arch-glow rounded-full -z-10 blur-3xl opacity-70 animate-pulse-glow pointer-events-none"
             aria-hidden="true"
           />
 
-          {/* Orbiting Glass Chips - Positioned strategically in a responsive ring */}
+          {/* Orbiting Glass Chips */}
           <div className="hidden sm:block absolute inset-0 pointer-events-none -z-5">
             {orbitingChips.map((chip, i) => {
-              // Custom fixed coordinates forming an aesthetic orbit around the arch
               const positions = [
-                { top: "6%", left: "4%", delay: 0 },
-                { top: "18%", right: "-2%", delay: 1.2 },
-                { bottom: "35%", right: "-8%", delay: 2.4 },
-                { bottom: "12%", left: "2%", delay: 3.6 },
-                { top: "52%", left: "-12%", delay: 4.8 },
+                { top: "4%", left: "0%", delay: 0 },
+                { top: "16%", right: "-4%", delay: 1.2 },
+                { bottom: "30%", right: "-8%", delay: 2.4 },
+                { bottom: "8%", left: "0%", delay: 3.6 },
+                { top: "50%", left: "-10%", delay: 4.8 },
               ];
               const pos = positions[i % positions.length];
               return (
@@ -216,63 +184,9 @@ export default function Hero() {
             })}
           </div>
 
-          {/* Interactive 3D Card / Frame */}
-          <motion.div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              rotateX,
-              rotateY,
-              transformStyle: "preserve-3d",
-            }}
-            className="relative w-64 sm:w-72 md:w-80 h-96 sm:h-[420px] md:h-[460px] cursor-pointer group animate-float-subtle"
-          >
-            {/* Outer Arch Border with Gradient */}
-            <div className="absolute -inset-[2px] arch-frame bg-gradient-to-b from-[#FF8A1F] via-amber-600/40 to-white/10 rounded-b-2xl p-[2px] shadow-[0_0_35px_rgba(255,138,31,0.3)] group-hover:shadow-[0_0_50px_rgba(255,138,31,0.55)] transition-shadow duration-500">
-              
-              {/* Inner Arch Container */}
-              <div className="relative w-full h-full arch-frame rounded-b-[18px] bg-[#0c0c0f] overflow-hidden">
-                {!imageError ? (
-                  <>
-                    <Image
-                      src="/romana.jpg"
-                      alt="Romana Tahir - AI/ML Engineer & MERN Stack Developer"
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 288px, 320px"
-                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                      onError={() => setImageError(true)}
-                    />
+          {/* Interactive AI Presenter Component */}
+          <AIAvatarPresenter />
 
-                    {/* Subtle Dark Vignette Overlay so image smoothly blends with the #050505 canvas */}
-                    <div className="absolute inset-0 vignette-overlay pointer-events-none" />
-
-                    {/* Bottom Gradient Fade */}
-                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent pointer-events-none" />
-                  </>
-                ) : (
-                  /* Fallback animated initials if image fails to load */
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#16161d] to-[#08080a] p-6 text-center">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-[#FF8A1F] via-amber-400 to-amber-200 flex items-center justify-center text-black font-heading text-4xl font-bold shadow-[0_0_30px_rgba(255,138,31,0.6)] mb-4">
-                      RT
-                    </div>
-                    <span className="font-heading text-2xl text-white tracking-wider">ROMANA TAHIR</span>
-                    <span className="font-mono-code text-xs text-[#FF8A1F] tracking-widest mt-1">AI/ML ENGINEER</span>
-                  </div>
-                )}
-
-                {/* Corner Glass Badge on Arch */}
-                <div className="absolute bottom-3 inset-x-3 glass-panel px-3 py-2 rounded-xl flex items-center justify-between border border-white/10 text-xs font-mono-code z-10">
-                  <span className="text-white font-medium">ROMANA TAHIR</span>
-                  <span className="text-[#FF8A1F] flex items-center gap-1 font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A1F]" />
-                    ICISCT 2026
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
 
       </div>
