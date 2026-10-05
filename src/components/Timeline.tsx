@@ -62,6 +62,7 @@ export default function Timeline({ items }: TimelineProps) {
                   <MapPin className="w-3.5 h-3.5 text-[#FF8A1F]" />
                   <span>{item.location}</span>
                 </div>
+              </div>
 
               {/* Experience Details Glass Card */}
               <div
