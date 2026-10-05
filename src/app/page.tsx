@@ -116,7 +116,7 @@ export default function Home() {
                   </div>
                   <div className="flex justify-between items-center text-neutral-400">
                     <span>CGPA</span>
-                    <span className="text-[#FF8A1F] font-bold text-sm">3.77 / 4.00</span>
+                    <span className="text-[#FF8A1F] font-bold text-sm">3.8 / 4.00</span>
                   </div>
                   <div className="flex justify-between items-center text-neutral-400">
                     <span>Research</span>

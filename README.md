@@ -3,7 +3,8 @@
 Personal developer portfolio website of **Romana Tahir** — AI/ML Engineer, MERN Stack Developer, and AI Automation Engineer based in Karachi, Pakistan.
 
 🌐 **Live Demo:** [https://romanatahir.dev](https://romanatahir.dev)  
-💼 **LinkedIn:** [linkedin.com/in/romana-tahir](https://linkedin.com/in/romana-tahir)  
+💼 **LinkedIn:** [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)  
+🐙 **GitHub:** [github.com/romanatahir1803-dev](https://github.com/romanatahir1803-dev)  
 📧 **Email:** [romanatahir1803@gmail.com](mailto:romanatahir1803@gmail.com)
 
 ---
@@ -11,7 +12,7 @@ Personal developer portfolio website of **Romana Tahir** — AI/ML Engineer, MER
 ## 🚀 Overview
 
 - **Specialization**: Artificial Intelligence, Machine Learning (Computer Vision & NLP), Autonomous Workflows (n8n, Make), and Full-Stack MERN Architectures.
-- **Academic Distinction**: B.Sc. Software Engineering at Sir Syed University of Engineering and Technology (SSUET) — **CGPA 3.77** & continuous Merit Scholar.
+- **Academic Distinction**: B.Sc. Software Engineering at Sir Syed University of Engineering and Technology (SSUET) — **CGPA 3.8** & continuous Merit Scholar.
 - **Research**: Published author at **ICISCT 2026** for *"Bilingual Multimodal AI Recipe Recommendation System"*.
 
 ---
