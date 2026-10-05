@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // @ts-expect-error agentRules config option
+  agentRules: false,
 };
 
 export default nextConfig;

@@ -63,31 +63,13 @@ export default function Timeline({ items }: TimelineProps) {
                   <span>{item.location}</span>
                 </div>
 
-                {item.isPlaceholder && (
-                  <div
-                    className={`mt-2 inline-flex items-center gap-1 text-[11px] font-mono-code text-amber-300/80 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-500/30 ${
-                      isEven ? "" : "md:self-end"
-                    }`}
-                  >
-                    <Edit3 className="w-3 h-3 text-[#FF8A1F]" />
-                    <span>Editable in /data/portfolio.ts</span>
-                  </div>
-                )}
-              </div>
-
               {/* Experience Details Glass Card */}
               <div
                 className={`w-full md:w-1/2 pl-10 sm:pl-16 md:pl-0 ${
                   isEven ? "md:pr-8" : "md:pl-8"
                 }`}
               >
-                <div
-                  className={`rounded-2xl bg-[#0e0e13]/85 backdrop-blur-md border ${
-                    item.isPlaceholder
-                      ? "border-amber-500/40 border-dashed"
-                      : "border-white/10 hover:border-[#FF8A1F]/40"
-                  } p-6 transition-all duration-300 hover:shadow-[0_10px_30px_-5px_rgba(255,138,31,0.2)]`}
-                >
+                <div className="rounded-2xl bg-[#0e0e13]/85 backdrop-blur-md border border-white/10 hover:border-[#FF8A1F]/40 p-6 transition-all duration-300 hover:shadow-[0_10px_30px_-5px_rgba(255,138,31,0.2)]">
                   <div className="flex items-center gap-2 mb-4">
                     <Briefcase className="w-4 h-4 text-[#FF8A1F]" />
                     <h4 className="font-heading text-xl text-white tracking-wide uppercase">
